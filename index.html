@@ -1,0 +1,1971 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MTH 241 Practice Set</title>
+
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+        options: {
+          skipHtmlTags: ["script", "style", "textarea", "pre", "code"],
+        },
+      };
+    </script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"
+    ></script>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="wrap">
+      <div class="course">MTH 241 · Differential Equations</div>
+      <h1>Practice Set</h1>
+      <p class="lede">
+        Practice for every learning target, ordered from identifying and setting
+        up to full IVPs. The problems are original, and every answer was checked with a computer algebra system.
+        Work each one on paper first, then open the answer. You can always check
+        a solution yourself by substituting it back into the equation.
+      </p>
+    </header>
+
+    <nav>
+      <div class="wrap">
+        <a href="#lt1"
+          ><span class="num">LT1</span
+          ><span class="title"
+            >Classifying Differential Equations &amp; Verifying Solutions</span
+          ></a
+        >
+        <a href="#lt2"
+          ><span class="num">LT2</span
+          ><span class="title"
+            >First-Order Existence &amp; Uniqueness Theorem</span
+          ></a
+        >
+        <a href="#lt3"
+          ><span class="num">LT3</span
+          ><span class="title">First-Order Separable</span></a
+        >
+        <a href="#lt4"
+          ><span class="num">LT4</span
+          ><span class="title">First-Order Linear</span></a
+        >
+        <a href="#lt5"
+          ><span class="num">LT5</span
+          ><span class="title">Transform Non-Linear into Linear</span></a
+        >
+        <a href="#lt6"
+          ><span class="num">LT6</span
+          ><span class="title">First-Order Exact</span></a
+        >
+        <a href="#lt7"
+          ><span class="num">LT7</span
+          ><span class="title">Theory of Higher-Order Equations</span></a
+        >
+        <a href="#lt8"
+          ><span class="num">LT8</span
+          ><span class="title">Reduction of Order</span></a
+        >
+        <a href="#lt9"
+          ><span class="num">LT9</span
+          ><span class="title">Homogeneous with Constant Coefficients</span></a
+        >
+        <a href="#lt10"
+          ><span class="num">LT10</span
+          ><span class="title">Undetermined Coefficients</span></a
+        >
+        <a href="#lt11"
+          ><span class="num">LT11</span
+          ><span class="title">Variation of Parameters</span></a
+        >
+        <a href="#lt12"
+          ><span class="num">LT12</span
+          ><span class="title">Power Series Solutions</span></a
+        >
+        <a href="#lt13"
+          ><span class="num">LT13</span
+          ><span class="title">Laplace Transform</span></a
+        >
+      </div>
+    </nav>
+
+    <main class="wrap">
+      <!--
+      ================================================================
+      HOW TO ADD A PROBLEM
+      ================================================================
+      1. Copy the PROBLEM TEMPLATE below (from <li> to </li>).
+      2. Paste it inside a section's <ol class="problems"> ... </ol>.
+         To add more, paste each new <li> ... </li> right after the last one.
+         Problem numbers are added automatically.
+      3. Replace the placeholder text, save, and refresh the browser.
+
+      WHAT EACH PART DOES
+        <li> ... </li>              One problem card. Required.
+        <span class="tag">IVP</span>  Small label before the problem. Any word works
+                                     (Verify, Identify, Concept, ...). Delete the
+                                     line for no label.
+        Text after the tag          The problem the student sees.
+        <details> / <summary>       The "Show answer" dropdown.
+        <p class="answer">          The final answer in the green box. Answers
+                                     only; no worked steps.
+
+      PROBLEM TEMPLATE
+      <li>
+        <span class="tag">IVP</span>
+        Solve \( y' = \dots,\ y(0) = \dots \).
+        <details>
+          <summary>Show answer</summary>
+          <div class="solution">
+            <p class="answer">\( y = \dots \)</p>
+          </div>
+        </details>
+      </li>
+
+      MULTI-PART PROBLEMS (problems that share the same instructions):
+      put a short description of the task in the tag, list each problem as a lettered
+      part, and give each part its own answer dropdown.
+      <li>
+        <span class="tag">Solve</span>
+        Shared instructions for every part.
+        <ul class="parts">
+          <li>
+            <span class="pnum">(a)</span> \( ... \)
+            <details class="part-answer">
+              <summary>Show answer</summary>
+              <p class="answer">\( ... \)</p>
+            </details>
+          </li>
+          <li>
+            <span class="pnum">(b)</span> \( ... \)
+            <details class="part-answer">
+              <summary>Show answer</summary>
+              <p class="answer">\( ... \)</p>
+            </details>
+          </li>
+        </ul>
+      </li>
+
+      WRITING MATH
+        Inline math:     \( y' + 2y = 6 \)
+        Centered math:   \[ y = 3 + Ce^{-2x} \]
+
+        y'  y''              primes
+        \dfrac{dy}{dx}       full-size fraction
+        x^2   e^{-4x}        exponents (use { } for more than one character)
+        x_0   c_1            subscripts
+        \sqrt{x}  \sqrt[3]{y}  square root, cube root
+        \int P\,dx           integral (\, adds a small space)
+        \sin x  \ln x        function names in upright text
+        \ne  \le  \ge        not equal, less or equal, greater or equal
+        \lt  \gt             less than, greater than. Use these instead of the
+                             plain symbols, which can confuse the HTML.
+        \partial f/\partial y   partial derivative
+
+        In plain text outside the math, write &amp; for an ampersand.
+
+      TROUBLESHOOTING: if math shows up as raw text like \( y' \), look for a
+      missing closing \) or an unmatched { }.
+      ================================================================
+    -->
+
+      <section class="lt" id="lt1">
+        <div class="eyebrow">Learning Target 1</div>
+        <h2>Classifying Differential Equations &amp; Verifying Solutions</h2>
+        <div class="target">
+          <strong>Target</strong>
+          <ul class="objectives">
+            <li>
+              Identify a differential equation as linear/non-linear and
+              determine its order.
+            </li>
+            <li>
+              Determine whether a family of functions or a function satisfies an
+              ODE.
+            </li>
+            <li>
+              Find the function from a family that satisfies a corresponding
+              IVP.
+            </li>
+          </ul>
+        </div>
+        <ol class="problems">
+          <li>
+            <span class="tag">Classify</span>
+            State the order of each differential equation and decide whether it is linear or nonlinear.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( x^3y''' - 2xy' + y = e^x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">Third order; linear</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( y'' + yy' = \sin x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">Second order; nonlinear because of the product \( yy' \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( t^2\dfrac{d^4u}{dt^4} + u = \cos t \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">Fourth order; linear</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(d)</span> \( \left(\dfrac{dy}{dx}\right)^3 + 4y = x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">First order; nonlinear because of \( (dy/dx)^3 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(e)</span> \( \dfrac{d^2y}{dx^2} + \cos y = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">Second order; nonlinear because of \( \cos y \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="tag">Verify</span>
+            Verify that the indicated function is an explicit solution of the given differential equation.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( 3y' + y = 0;\ y = e^{-x/3} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y' = -\tfrac13 e^{-x/3} \), so \( 3y' + y = -e^{-x/3} + e^{-x/3} = 0 \).</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( y'' - 4y' + 13y = 0;\ y = e^{2x}\sin 3x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y' = e^{2x}(2\sin 3x + 3\cos 3x) \) and \( y'' = e^{2x}(-5\sin 3x + 12\cos 3x) \), so \( y'' - 4y' + 13y = 0 \).</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="tag">Interval</span>
+            Verify that the indicated function \( y = \phi(x) \) is a solution of the given differential equation. Give the domain of \(\phi\) as a function, then give an interval \(I\) of definition of \(\phi\) as a solution.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( y' = 2xy^2;\ y = \dfrac{1}{9 - x^2} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">Domain: \( \{x \mid x \ne \pm 3\} \). Interval of definition: \( (-3, 3) \); other intervals are \( (-\infty, -3) \) and \( (3, \infty) \).</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( y' = 1 + y^2;\ y = \tan x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">Domain: all \(x\) except \( x = \tfrac{\pi}{2} + n\pi \). Interval of definition: \( \left(-\tfrac{\pi}{2}, \tfrac{\pi}{2}\right) \) (or any one interval between consecutive asymptotes).</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="tag">Implicit</span>
+            Verify that \( \ln\!\left(\dfrac{X-2}{X-1}\right) = t \) is an implicit solution of \( \dfrac{dX}{dt} = (X-2)(X-1) \). Then find an explicit solution and an interval of definition.
+            <details>
+              <summary>Show answer</summary>
+              <div class="solution">
+                <p class="answer">\( X = \dfrac{e^t - 2}{e^t - 1} \), defined on \( (-\infty, 0) \) or on \( (0, \infty) \)</p>
+              </div>
+            </details>
+          </li>
+          <li>
+            <span class="tag">Verify family</span>
+            Verify that the indicated family of functions is a solution of the given differential equation.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( \dfrac{dP}{dt} = 2P(1 - P);\ P = \dfrac{c_1e^{2t}}{1 + c_1e^{2t}} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( \dfrac{dP}{dt} = \dfrac{2c_1e^{2t}}{(1 + c_1e^{2t})^2} = 2\cdot\dfrac{c_1e^{2t}}{1 + c_1e^{2t}}\cdot\dfrac{1}{1 + c_1e^{2t}} = 2P(1 - P) \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( y'' - 6y' + 9y = 0;\ y = c_1e^{3x} + c_2xe^{3x} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y' = (3c_1 + c_2)e^{3x} + 3c_2xe^{3x} \), \( y'' = (9c_1 + 6c_2)e^{3x} + 9c_2xe^{3x} \), so \( y'' - 6y' + 9y = 0 \).</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="tag">IVP</span>
+            \( y = \dfrac{1}{1 + c_1e^{-x}} \) is a one-parameter family of solutions of \( y' = y - y^2 \). Find the solution of the IVP with \( y(0) = -\tfrac12 \).
+            <details>
+              <summary>Show answer</summary>
+              <div class="solution">
+                <p class="answer">\( y = \dfrac{1}{1 - 3e^{-x}} \)</p>
+              </div>
+            </details>
+          </li>
+          <li>
+            <span class="tag">IVP</span>
+            \( y = 1/(x^2 + c) \) is a one-parameter family of solutions of \( y' + 2xy^2 = 0 \). Find the solution of the IVP with the given initial condition and the largest interval \(I\) over which it is defined.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( y(3) = \tfrac15 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = \dfrac{1}{x^2 - 4} \), \( I = (2, \infty) \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( y(1) = \tfrac12 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = \dfrac{1}{x^2 + 1} \), \( I = (-\infty, \infty) \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="tag">IVP</span>
+            \( x = c_1\cos 2t + c_2\sin 2t \) is a two-parameter family of solutions of \( x'' + 4x = 0 \). Find the solution of the IVP with the given initial conditions.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( x(0) = 3,\ x'(0) = -4 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( x = 3\cos 2t - 2\sin 2t \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( x(\pi/4) = 1,\ x'(\pi/4) = 6 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( x = -3\cos 2t + \sin 2t \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="tag">IVP</span>
+            \( y = c_1e^{2x} + c_2e^{-2x} \) is a two-parameter family of solutions of \( y'' - 4y = 0 \). Find the solution of the IVP with the given initial conditions.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( y(0) = 1,\ y'(0) = 6 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = 2e^{2x} - e^{-2x} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( y(1) = 0,\ y'(1) = 4 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = e^{2x-2} - e^{2-2x} \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <section class="lt" id="lt2">
+        <div class="eyebrow">Learning Target 2</div>
+        <h2>First-Order Existence &amp; Uniqueness Theorem</h2>
+        <div class="target">
+          <strong>Target</strong>
+          <ul class="objectives">
+            <li>
+              Apply the E&amp;U Theorem to describe all ordered pairs over which
+              the first-order IVP \( \dfrac{dy}{dx} = f(x,y),\ y(x_0) = y_0 \)
+              is guaranteed to have a solution, and over what ordered pairs that
+              solution is unique.
+            </li>
+          </ul>
+        </div>
+        <ol class="problems">
+          <li>
+            <span class="tag">Region</span>
+            Determine a region of the \(xy\)-plane for which the given differential equation would have a unique solution whose graph passes through a point \((x_0, y_0)\) in the region.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( \dfrac{dy}{dx} = y^{4/5} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">A unique solution in any region where \( y \ne 0 \) (\( y \gt 0 \) or \( y \lt 0 \))</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( (x - 1)\dfrac{dy}{dx} = y \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">A unique solution in any region where \( x \ne 1 \) (\( x \gt 1 \) or \( x \lt 1 \))</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( (9 - y^2)y' = x^3 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">A unique solution in any region where \( y \lt -3 \), \( -3 \lt y \lt 3 \), or \( y \gt 3 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(d)</span> \( (x^2 + 4y^2)y' = x^2 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">A unique solution in any region not containing \( (0, 0) \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="tag">Uniqueness</span>
+            Determine whether the existence and uniqueness theorem guarantees that \( y' = \sqrt{y^2 - 16} \) has a unique solution through the given point.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( (2, 5) \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">Yes. \( (2, 5) \) is in the region \( y \gt 4 \).</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( (0, 4) \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">No guarantee. \( y = 4 \) is on the boundary of the regions \( y \lt -4 \) and \( y \gt 4 \).</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( (-1, -6) \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">Yes. \( (-1, -6) \) is in the region \( y \lt -4 \).</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <section class="lt" id="lt3">
+        <div class="eyebrow">Learning Target 3</div>
+        <h2>First-Order Separable</h2>
+        <div class="target">
+          <strong>Target</strong>
+          <ul class="objectives">
+            <li>Identify a separable ODE and solve it.</li>
+          </ul>
+        </div>
+        <ol class="problems">
+          <li>
+            <span class="tag">Solve</span>
+            Solve the given differential equation by separation of variables.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( \dfrac{dy}{dx} = \cos 3x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = \tfrac13\sin 3x + c \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( dx - e^{2x}\,dy = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = -\tfrac12 e^{-2x} + c \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( x\dfrac{dy}{dx} = 3y \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = cx^3 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(d)</span> \( \dfrac{dy}{dx} = e^{2x - 3y} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( 2e^{3y} - 3e^{2x} = c \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(e)</span> \( \dfrac{dy}{dx} = y^2\sin x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = \dfrac{1}{\cos x + c} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(f)</span> \( \dfrac{dy}{dx} = (1 + y^2)e^{x} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = \tan(e^{x} + c) \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(g)</span> \( \dfrac{dS}{dr} = -kS \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( S = ce^{-kr} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(h)</span> \( \dfrac{dP}{dt} = 2P - P^2 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( P = \dfrac{2ce^{2t}}{1 + ce^{2t}} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(i)</span> \( \dfrac{dy}{dx} = \dfrac{xy + 2x - y - 2}{xy - 3x + y - 3} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( (x + 1)^2e^{y} = c(y + 2)^5e^{x} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(j)</span> \( \dfrac{dy}{dx} = x\sqrt{4 - y^2} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = 2\sin\!\left(\dfrac{x^2}{2} + c\right) \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(k)</span> \( \dfrac{dy}{dx} = xe^{-y} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = \ln\!\left(\dfrac{x^2}{2} + c\right) \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="tag">IVP</span>
+            Find an explicit solution of the given initial-value problem.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( \dfrac{dx}{dt} = 2(x^2 + 1),\ x(\pi/8) = 1 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( x = \tan 2t \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( x^2\dfrac{dy}{dx} = 2y,\ y(2) = 1 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = e^{1 - 2/x} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( \dfrac{dy}{dx} = y\ln y,\ y(0) = e^2 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = e^{2e^{x}} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(d)</span> \( \dfrac{dy}{dx} = \dfrac{x}{y},\ y(0) = -3 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = -\sqrt{x^2 + 9} \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <section class="lt" id="lt4">
+        <div class="eyebrow">Learning Target 4</div>
+        <h2>First-Order Linear</h2>
+        <div class="target">
+          <strong>Target</strong>
+          <ul class="objectives">
+            <li>Identify a first-order linear ODE and solve it.</li>
+          </ul>
+        </div>
+        <ol class="problems">
+          <li>
+            <span class="tag">Solve</span>
+            Find the general solution of the given differential equation. Give the largest interval \(I\) over which the general solution is defined.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( \dfrac{dy}{dx} = -3y \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = ce^{-3x} \) for \( -\infty \lt x \lt \infty \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( \dfrac{dy}{dx} + 2y = e^{x} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = \tfrac13 e^{x} + ce^{-2x} \) for \( -\infty \lt x \lt \infty \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( y' + 2xy = x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = \tfrac12 + ce^{-x^2} \) for \( -\infty \lt x \lt \infty \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(d)</span> \( xy' + 2y = 1 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = \tfrac12 + \dfrac{c}{x^2} \) for \( 0 \lt x \lt \infty \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(e)</span> \( x\dfrac{dy}{dx} - y = x^2\cos x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = x\sin x + cx \) for \( 0 \lt x \lt \infty \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(f)</span> \( x\dfrac{dy}{dx} + 3y = x^2 + 1 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = \tfrac15 x^2 + \tfrac13 + \dfrac{c}{x^3} \) for \( 0 \lt x \lt \infty \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(g)</span> \( x^2y' + x(x + 3)y = e^{-x} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = \dfrac{e^{-x}}{2x} + \dfrac{ce^{-x}}{x^3} \) for \( 0 \lt x \lt \infty \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(h)</span> \( y\,dx - 2(x + y^3)\,dy = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( x = 2y^3 + cy^2 \) for \( 0 \lt y \lt \infty \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(i)</span> \( \dfrac{dy}{dx} + (\tan x)y = \cos x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = x\cos x + c\cos x \) for \( -\pi/2 \lt x \lt \pi/2 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(j)</span> \( (x + 2)\dfrac{dy}{dx} + (x + 3)y = 3e^{-x} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = \dfrac{(3x + c)e^{-x}}{x + 2} \) for \( -2 \lt x \lt \infty \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(k)</span> \( \dfrac{dr}{d\theta} + r\tan\theta = \cos^2\theta \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( r = \sin\theta\cos\theta + c\cos\theta \) for \( -\pi/2 \lt \theta \lt \pi/2 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(l)</span> \( x\dfrac{dy}{dx} + (2x + 1)y = e^{-2x} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = e^{-2x} + \dfrac{ce^{-2x}}{x} \) for \( 0 \lt x \lt \infty \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="tag">IVP</span>
+            Solve the given initial-value problem. Give the largest interval \(I\) over which the solution is defined.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( \dfrac{dy}{dx} = x + 2y,\ y(0) = 1 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = -\tfrac12 x - \tfrac14 + \tfrac54 e^{2x} \), \( I = (-\infty, \infty) \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( xy' + y = 2x,\ y(1) = 3 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = x + \dfrac{2}{x} \), \( I = (0, \infty) \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( R\dfrac{dq}{dt} + \dfrac{1}{C}q = E,\ q(0) = q_0 \); \( R, C, E, q_0 \) constants
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( q = EC + (q_0 - EC)e^{-t/RC} \), \( I = (-\infty, \infty) \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(d)</span> \( xy' + y = e^{2x},\ y(1) = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = \dfrac{e^{2x} - e^2}{2x} \), \( I = (0, \infty) \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(e)</span> \( (x + 2)\dfrac{dy}{dx} + y = 2x,\ y(0) = 1 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = \dfrac{x^2 + 2}{x + 2} \), \( I = (-2, \infty) \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(f)</span> \( y' + (\cos x)y = 3\cos x,\ y(0) = 1 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = 3 - 2e^{-\sin x} \), \( I = (-\infty, \infty) \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <section class="lt" id="lt5">
+        <div class="eyebrow">Learning Target 5</div>
+        <h2>Transform Non-Linear into Linear</h2>
+        <div class="target">
+          <strong>Target</strong>
+          <ul class="objectives">
+            <li>
+              Solve a non-linear Bernoulli equation by transforming it to a
+              linear one.
+            </li>
+          </ul>
+        </div>
+        <ol class="problems">
+          <li>
+            <span class="tag">Solve</span>
+            Solve the given Bernoulli equation by using an appropriate substitution.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( x\dfrac{dy}{dx} + y = \dfrac{1}{y^3} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y^4 = 1 + cx^{-4} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( \dfrac{dy}{dx} = y(xy^2 - 1) \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y^{-2} = x + \tfrac12 + ce^{2x} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( t^2\dfrac{dy}{dt} + y^2 = 2ty \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = \dfrac{t^2}{t + c} \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="tag">IVP</span>
+            Solve the initial-value problem \( x^2\dfrac{dy}{dx} - xy = 2y^3,\ y(1) = 1 \).
+            <details>
+              <summary>Show answer</summary>
+              <div class="solution">
+                <p class="answer">\( y^{-2} = -4x^{-1} + 5x^{-2} \)</p>
+              </div>
+            </details>
+          </li>
+        </ol>
+      </section>
+
+      <section class="lt" id="lt6">
+        <div class="eyebrow">Learning Target 6</div>
+        <h2>First-Order Exact</h2>
+        <div class="target">
+          <strong>Target</strong>
+          <ul class="objectives">
+            <li>Identify a first-order exact ODE and solve it.</li>
+          </ul>
+        </div>
+        <ol class="problems">
+          <li>
+            <span class="tag">Exact?</span>
+            Determine whether the given differential equation is exact. If it is exact, solve it.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( (3x + 2)\,dx + (4y - 1)\,dy = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( \tfrac32 x^2 + 2x + 2y^2 - y = c \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( (2x + 3y)\,dx + (3x - 4y^3)\,dy = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( x^2 + 3xy - y^4 = c \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( (2xy^3 + 1)\,dx + (3x^2y^2 - 2)\,dy = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( x^2y^3 + x - 2y = c \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(d)</span> \( (x^2 + y^2)\,dx + (2xy + x^2)\,dy = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">Not exact: \( M_y = 2y \) and \( N_x = 2y + 2x \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(e)</span> \( (y\cos x + 2x)\,dx + (\sin x - 3y^2)\,dy = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y\sin x + x^2 - y^3 = c \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(f)</span> \( (y + x^2)\,dx + (2x + y)\,dy = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">Not exact: \( M_y = 1 \) and \( N_x = 2 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(g)</span> \( x\dfrac{dy}{dx} = 4x^3 + e^{x} - y \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( xy - x^4 - e^{x} = c \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(h)</span> \( \left(x^2y^2 - \dfrac{1}{1 + 4x^2}\right)dx + \tfrac23 x^3y\,dy = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( 2x^3y^2 - 3\arctan(2x) = c \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(i)</span> \( (\sec^2 x - y\sin x)\,dx + \cos x\,dy = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y\cos x + \tan x = c \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(j)</span> \( (3t^2y - 4t - y^2)\,dt + (t^3 - 2ty + 2y)\,dy = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( t^3y - 2t^2 - ty^2 + y^2 = c \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="tag">IVP</span>
+            Solve the given initial-value problem.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( (y^2 + 2x)\,dx + (2xy - 1)\,dy = 0,\ y(1) = 2 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( xy^2 + x^2 - y = 3 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( (3y - 2t + 1)\,dt + (3t + 4y)\,dy = 0,\ y(0) = 1 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( 3ty - t^2 + t + 2y^2 = 2 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( (y^2e^{x} + 2x)\,dx + \left(2ye^{x} + \dfrac1y\right)dy = 0,\ y(0) = 1 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y^2e^{x} + x^2 + \ln y = 1 \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="tag">Find k</span>
+            Find the value of \(k\) so that \( (2xy^3 + kx^2y)\,dx + (3x^2y^2 + 2x^3)\,dy = 0 \) is exact. Then solve it.
+            <details>
+              <summary>Show answer</summary>
+              <div class="solution">
+                <p class="answer">\( k = 6 \); \( x^2y^3 + 2x^3y = c \)</p>
+              </div>
+            </details>
+          </li>
+          <li>
+            <span class="tag">Integrating factor</span>
+            Verify that the given differential equation is not exact. Multiply by the indicated integrating factor \( \mu(x,y) \), verify that the new equation is exact, and solve.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( (3xy + y^2)\,dx + (x^2 + xy)\,dy = 0;\ \mu(x,y) = x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( x^3y + \tfrac12 x^2y^2 = c \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( (x^3 + y)\,dx - x\,dy = 0;\ \mu(x,y) = 1/x^2 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( \tfrac12 x^2 - \dfrac{y}{x} = c \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <section class="lt" id="lt7">
+        <div class="eyebrow">Learning Target 7</div>
+        <h2>Theory of Higher-Order Equations</h2>
+        <div class="target">
+          <strong>Target</strong>
+          <ul class="objectives">
+            <li>
+              State and apply the Unique Solution Theorem for nth-order linear
+              IVPs.
+            </li>
+            <li>Determine whether functions are linearly independent.</li>
+          </ul>
+        </div>
+        <ol class="problems">
+          <li>
+            <span class="tag">Interval</span>
+            Find the largest interval containing \( x = 0 \) on which the IVP \( (x + 3)y'' + 2y = x,\ y(0) = 1,\ y'(0) = 0 \) is guaranteed to have a unique solution.
+            <details>
+              <summary>Show answer</summary>
+              <div class="solution">
+                <p class="answer">\( -3 \lt x \lt \infty \)</p>
+              </div>
+            </details>
+          </li>
+          <li>
+            <span class="tag">Independence</span>
+            Determine whether the given set of functions is linearly independent on \( (-\infty, \infty) \).
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( f_1 = x,\ f_2 = x^2,\ f_3 = 2x + 5x^2 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">Linearly dependent, since \( (2)x + (5)x^2 + (-1)(2x + 5x^2) = 0 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( f_1 = 3,\ f_2 = \sin^2 x,\ f_3 = \cos^2 x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">Linearly dependent, since \( (1)3 + (-3)\sin^2 x + (-3)\cos^2 x = 0 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( f_1 = x + 1,\ f_2 = x - 2,\ f_3 = x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">Linearly dependent, since \( (2)(x + 1) + (1)(x - 2) + (-3)x = 0 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(d)</span> \( f_1 = 1,\ f_2 = x - 1,\ f_3 = x^2 + x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">Linearly independent: \( W(f_1, f_2, f_3) = 2 \ne 0 \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="tag">Fundamental set</span>
+            Verify that the given functions form a fundamental set of solutions of the differential equation on the indicated interval. Form the general solution.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( y'' - y' - 6y = 0;\ e^{3x},\ e^{-2x},\ (-\infty, \infty) \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( W = -5e^{x} \ne 0 \); general solution \( y = c_1e^{3x} + c_2e^{-2x} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( x^2y'' - 4xy' + 6y = 0;\ x^2,\ x^3,\ (0, \infty) \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( W = x^4 \ne 0 \) on \( (0, \infty) \); general solution \( y = c_1x^2 + c_2x^3 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( y'' + 4y' + 13y = 0;\ e^{-2x}\cos 3x,\ e^{-2x}\sin 3x,\ (-\infty, \infty) \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( W = 3e^{-4x} \ne 0 \); general solution \( y = c_1e^{-2x}\cos 3x + c_2e^{-2x}\sin 3x \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <section class="lt" id="lt8">
+        <div class="eyebrow">Learning Target 8</div>
+        <h2>Reduction of Order</h2>
+        <div class="target">
+          <strong>Target</strong>
+          <ul class="objectives">
+            <li>
+              Given a solution to a 2nd-order linear homogeneous ODE, use
+              Reduction of Order to find a fundamental set of solutions and a
+              general solution.
+            </li>
+          </ul>
+        </div>
+        <ol class="problems">
+          <li>
+            <span class="tag">Reduction of order</span>
+            The indicated function \( y_1(x) \) is a solution of the given differential equation. Use reduction of order to find a second solution \( y_2(x) \).
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( y'' - 6y' + 9y = 0;\ y_1 = e^{3x} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y_2 = xe^{3x} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( y'' + 25y = 0;\ y_1 = \cos 5x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y_2 = \sin 5x \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( 4y'' - 4y' + y = 0;\ y_1 = e^{x/2} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y_2 = xe^{x/2} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(d)</span> \( x^2y'' - 5xy' + 9y = 0;\ y_1 = x^3 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y_2 = x^3\ln|x| \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(e)</span> \( xy'' + y' = 0;\ y_1 = 1 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y_2 = \ln|x| \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(f)</span> \( x^2y'' - 3xy' + 5y = 0;\ y_1 = x^2\cos(\ln x) \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y_2 = x^2\sin(\ln x) \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(g)</span> \( x^2y'' - 2y = 0;\ y_1 = x^2 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y_2 = x^{-1} \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <section class="lt" id="lt9">
+        <div class="eyebrow">Learning Target 9</div>
+        <h2>Homogeneous with Constant Coefficients</h2>
+        <div class="target">
+          <strong>Target</strong>
+          <ul class="objectives">
+            <li>
+              Solve higher-order homogeneous linear ODEs with constant
+              coefficients.
+            </li>
+          </ul>
+        </div>
+        <ol class="problems">
+          <li>
+            <span class="tag">Solve</span>
+            Find the general solution of the given second-order differential equation.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( 3y'' + y' = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1 + c_2e^{-x/3} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( y'' + y' - 12y = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1e^{3x} + c_2e^{-4x} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( y'' - 6y' + 9y = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1e^{3x} + c_2xe^{3x} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(d)</span> \( 6y'' - y' - 2y = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1e^{2x/3} + c_2e^{-x/2} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(e)</span> \( y'' + 16y = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1\cos 4x + c_2\sin 4x \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(f)</span> \( y'' + 2y' + 5y = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = e^{-x}(c_1\cos 2x + c_2\sin 2x) \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(g)</span> \( 2y'' + 2y' + y = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = e^{-x/2}\left[c_1\cos(x/2) + c_2\sin(x/2)\right] \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="tag">Solve</span>
+            Find the general solution of the given higher-order differential equation.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( y''' - y'' - 6y' = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1 + c_2e^{3x} + c_3e^{-2x} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( y''' - 3y'' - 4y' + 12y = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1e^{3x} + c_2e^{2x} + c_3e^{-2x} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( y''' - y'' - y' + y = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1e^{x} + c_2xe^{x} + c_3e^{-x} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(d)</span> \( \dfrac{d^3u}{dt^3} - \dfrac{d^2u}{dt^2} + 3\dfrac{du}{dt} + 5u = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( u = c_1e^{-t} + e^{t}(c_2\cos 2t + c_3\sin 2t) \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(e)</span> \( y''' - 3y'' + 3y' - y = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1e^{x} + c_2xe^{x} + c_3x^2e^{x} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(f)</span> \( y^{(4)} - y''' + y'' = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1 + c_2x + e^{x/2}\left[c_3\cos(\sqrt3x/2) + c_4\sin(\sqrt3x/2)\right] \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(g)</span> \( y^{(4)} + 8y'' + 16y = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1\cos 2x + c_2\sin 2x + c_3x\cos 2x + c_4x\sin 2x \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(h)</span> \( y^{(4)} - 5y'' + 4y = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1e^{x} + c_2e^{-x} + c_3e^{2x} + c_4e^{-2x} \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="tag">IVP</span>
+            Solve the given initial-value problem.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( y'' + 9y = 0,\ y(0) = -1,\ y'(0) = 6 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = -\cos 3x + 2\sin 3x \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( y'' - 3y' - 4y = 0,\ y(1) = 0,\ y'(1) = 5 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = e^{4x-4} - e^{1-x} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( y'' + 2y' + 2y = 0,\ y(0) = 0,\ y'(0) = 3 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = 3e^{-x}\sin x \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(d)</span> \( y''' + 4y'' + 4y' = 0,\ y(0) = 0,\ y'(0) = 1,\ y''(0) = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = 1 - e^{-2x} - xe^{-2x} \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="tag">BVP</span>
+            Solve the given boundary-value problem.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( y'' - 4y' + 4y = 0,\ y(0) = 2,\ y(1) = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = 2e^{2x} - 2xe^{2x} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( y'' + 4y = 0,\ y(0) = 0,\ y(\pi/4) = 3 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = 3\sin 2x \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="tag">Find the DE</span>
+            Find a homogeneous linear differential equation with constant coefficients whose general solution is given.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( y = c_1e^{2x} + c_2e^{-3x} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y'' + y' - 6y = 0 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( y = c_1 + c_2e^{-4x} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y'' + 4y' = 0 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( y = c_1\cos 5x + c_2\sin 5x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y'' + 25y = 0 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(d)</span> \( y = c_1e^{2x}\cos x + c_2e^{2x}\sin x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y'' - 4y' + 5y = 0 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(e)</span> \( y = c_1 + c_2x + c_3e^{-3x} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y''' + 3y'' = 0 \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <section class="lt" id="lt10">
+        <div class="eyebrow">Learning Target 10</div>
+        <h2>Undetermined Coefficients</h2>
+        <div class="target">
+          <strong>Target</strong>
+          <ul class="objectives">
+            <li>
+              Solve higher-order non-homogeneous linear ODEs with constant
+              coefficients using Undetermined Coefficients.
+            </li>
+          </ul>
+        </div>
+        <ol class="problems">
+          <li>
+            <span class="tag">Solve</span>
+            Solve the given differential equation by undetermined coefficients.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( y'' + 4y' + 3y = 9 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1e^{-x} + c_2e^{-3x} + 3 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( y'' - 6y' + 9y = 18x + 3 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1e^{3x} + c_2xe^{3x} + 2x + \tfrac53 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( y'' + 2y' + y = x^2 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1e^{-x} + c_2xe^{-x} + x^2 - 4x + 6 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(d)</span> \( y'' + 4y = 8e^{2x} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1\cos 2x + c_2\sin 2x + e^{2x} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(e)</span> \( y'' + 2y' = 4 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1 + c_2e^{-2x} + 2x \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(f)</span> \( y'' - 4y' + 4y = 2 + e^{2x} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1e^{2x} + c_2xe^{2x} + \tfrac12 + \tfrac12 x^2e^{2x} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(g)</span> \( y'' + 9y = 6\cos 3x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1\cos 3x + c_2\sin 3x + x\sin 3x \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(h)</span> \( y'' + y = 4x\cos x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1\cos x + c_2\sin x + x\cos x + x^2\sin x \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(i)</span> \( y'' - 2y' + 2y = e^{x}\sin x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = e^{x}(c_1\cos x + c_2\sin x) - \tfrac12 xe^{x}\cos x \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(j)</span> \( y'' + 3y' + 2y = 10\sin x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1e^{-x} + c_2e^{-2x} - 3\cos x + \sin x \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(k)</span> \( y''' - 4y'' = 8 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1 + c_2x + c_3e^{4x} - x^2 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(l)</span> \( y''' - y'' - y' + y = 2e^{-x} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1e^{x} + c_2xe^{x} + c_3e^{-x} + \tfrac12 xe^{-x} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(m)</span> \( y^{(4)} - 16y = 32 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1e^{2x} + c_2e^{-2x} + c_3\cos 2x + c_4\sin 2x - 2 \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="tag">IVP</span>
+            Solve the given initial-value problem.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( y'' + 9y = 9,\ y(\pi/6) = 0,\ y'(\pi/6) = 3 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = 1 - \cos 3x - \sin 3x \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( 2y'' + y' = 4x,\ y(0) = 0,\ y'(0) = 1 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = 18 - 18e^{-x/2} + 2x^2 - 8x \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( y'' + 2y' + 5y = 10e^{x},\ y(0) = 1,\ y'(0) = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = e^{-x}\left(-\tfrac14\cos 2x - \tfrac34\sin 2x\right) + \tfrac54 e^{x} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(d)</span> \( \dfrac{d^2x}{dt^2} + \omega^2x = F_0\cos\omega t,\ x(0) = 0,\ x'(0) = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( x = \dfrac{F_0}{2\omega}\,t\sin\omega t \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(e)</span> \( y''' - y'' = 6 - 2e^{x},\ y(0) = y'(0) = y''(0) = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = -10 + 10e^{x} - 8x - 3x^2 - 2xe^{x} \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <section class="lt" id="lt11">
+        <div class="eyebrow">Learning Target 11</div>
+        <h2>Variation of Parameters</h2>
+        <div class="target">
+          <strong>Target</strong>
+          <ul class="objectives">
+            <li>
+              Solve higher-order non-homogeneous linear ODEs with constant
+              coefficients using Variation of Parameters.
+            </li>
+          </ul>
+        </div>
+        <ol class="problems">
+          <li>
+            <span class="tag">Solve</span>
+            Solve each differential equation by variation of parameters.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( y'' + y = \csc x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1\cos x + c_2\sin x - x\cos x + \sin x\ln|\sin x| \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( y'' + y = \cos x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1\cos x + c_2\sin x + \tfrac12 x\sin x \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( y'' + y = \sin^2 x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1\cos x + c_2\sin x + \tfrac12 + \tfrac16\cos 2x \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(d)</span> \( y'' - 4y = 8xe^{-2x} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1e^{2x} + c_2e^{-2x} - x^2e^{-2x} - \tfrac12 xe^{-2x} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(e)</span> \( y'' - y' = 2 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1 + c_2e^{x} - 2x \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(f)</span> \( y'' - 3y' + 2y = \dfrac{e^{3x}}{1 + e^{x}} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1e^{x} + c_2e^{2x} + (e^{x} + e^{2x})\ln(1 + e^{x}) \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(g)</span> \( y'' + 3y' + 2y = \cos e^{x} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1e^{-x} + c_2e^{-2x} - e^{-2x}\cos e^{x} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(h)</span> \( y'' - 2y' + y = e^{x}\ln x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_1e^{x} + c_2xe^{x} + \tfrac12 x^2e^{x}\ln x - \tfrac34 x^2e^{x} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(i)</span> \( y'' + 2y' + 2y = e^{-x}\sec x \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = e^{-x}(c_1\cos x + c_2\sin x) + e^{-x}\cos x\ln|\cos x| + xe^{-x}\sin x \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <section class="lt" id="lt12">
+        <div class="eyebrow">Learning Target 12</div>
+        <h2>Power Series Solutions</h2>
+        <div class="target">
+          <strong>Target</strong>
+          <ul class="objectives">
+            <li>Find a power series solution to a linear ODE.</li>
+          </ul>
+        </div>
+        <ol class="problems">
+          <li>
+            <span class="tag">Shift index</span>
+            Use a substitution to shift the summation index so that the general term of \( \displaystyle\sum_{n=1}^{\infty} nc_nx^{n+3} \) involves \( x^k \).
+            <details>
+              <summary>Show answer</summary>
+              <div class="solution">
+                <p class="answer">\( \displaystyle\sum_{k=4}^{\infty}(k-3)c_{k-3}x^k \)</p>
+              </div>
+            </details>
+          </li>
+          <li>
+            <span class="tag">Combine</span>
+            Rewrite the given expression as a single power series whose general term involves \( x^k \).
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( \displaystyle\sum_{n=1}^{\infty} nc_nx^{n-1} + 2\sum_{n=0}^{\infty} c_nx^n \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( \displaystyle\sum_{k=0}^{\infty}\big[(k+1)c_{k+1} + 2c_k\big]x^k \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( \displaystyle\sum_{n=1}^{\infty} 3nc_nx^{n-1} - \sum_{n=0}^{\infty} 2c_nx^{n+1} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( 3c_1 + \displaystyle\sum_{k=1}^{\infty}\big[3(k+1)c_{k+1} - 2c_{k-1}\big]x^k \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( \displaystyle\sum_{n=2}^{\infty} n(n-1)c_nx^{n-2} + \sum_{n=1}^{\infty} nc_nx^n - 4\sum_{n=0}^{\infty} c_nx^n \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( 2c_2 - 4c_0 + \displaystyle\sum_{k=1}^{\infty}\big[(k+2)(k+1)c_{k+2} + (k - 4)c_k\big]x^k \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="tag">Verify</span>
+            Verify by direct substitution that the given power series is a solution of the indicated differential equation.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( y = \displaystyle\sum_{n=0}^{\infty}\frac{(-1)^n}{2^nn!}x^{2n},\ y' + xy = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y' + xy = \displaystyle\sum_{k=1}^{\infty}\left[\frac{(-1)^k}{2^{k-1}(k-1)!} + \frac{(-1)^{k-1}}{2^{k-1}(k-1)!}\right]x^{2k-1} = 0 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( y = \displaystyle\sum_{n=0}^{\infty}\frac{(-1)^n}{2n+1}x^{2n+1},\ (1 + x^2)y'' + 2xy' = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y' = \displaystyle\sum_{n=0}^{\infty}(-1)^nx^{2n} \), so \( (1 + x^2)y' = 1 \); differentiating gives \( (1 + x^2)y'' + 2xy' = 0 \).</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="tag">Solve</span>
+            Find a power series solution \( y = \sum_{n=0}^{\infty} c_nx^n \) of the given linear first-order differential equation.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( y' + 3y = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_0\displaystyle\sum_{k=0}^{\infty}\frac{1}{k!}(-3x)^k = c_0e^{-3x} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( y' = 2xy \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = c_0\displaystyle\sum_{k=0}^{\infty}\frac{1}{k!}\left(x^2\right)^k = c_0e^{x^2} \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="tag">Solve</span>
+            Find two power series solutions of the given differential equation about the ordinary point \( x = 0 \).
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( y'' - xy = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y_1 = 1 + \tfrac16 x^3 + \tfrac{1}{180}x^6 + \cdots \) and \( y_2 = x + \tfrac{1}{12}x^4 + \tfrac{1}{504}x^7 + \cdots \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( y'' + xy' + y = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y_1 = 1 - \tfrac12 x^2 + \tfrac18 x^4 - \tfrac{1}{48}x^6 + \cdots \) and \( y_2 = x - \tfrac13 x^3 + \tfrac{1}{15}x^5 - \tfrac{1}{105}x^7 + \cdots \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( y'' - 2xy' + 4y = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y_1 = 1 - 2x^2 \) and \( y_2 = x - \tfrac13 x^3 - \tfrac{1}{30}x^5 - \tfrac{1}{210}x^7 - \cdots \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(d)</span> \( (x + 1)y'' - y' = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y_1 = 1 \) and \( y_2 = x + \tfrac12 x^2 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(e)</span> \( y'' + (x - 1)y' + y = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y_1 = 1 - \tfrac12 x^2 - \tfrac16 x^3 + \tfrac{1}{12}x^4 + \cdots \) and \( y_2 = x + \tfrac12 x^2 - \tfrac16 x^3 - \tfrac16 x^4 + \cdots \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(f)</span> \( (x^2 + 1)y'' + xy' - y = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y_1 = 1 + \tfrac12 x^2 - \tfrac18 x^4 + \tfrac{1}{16}x^6 - \cdots \) and \( y_2 = x \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <section class="lt" id="lt13">
+        <div class="eyebrow">Learning Target 13</div>
+        <h2>Laplace Transform</h2>
+        <div class="target">
+          <strong>Target</strong>
+          <ul class="objectives">
+            <li>Solve linear IVPs using the Laplace Transform.</li>
+          </ul>
+        </div>
+        <ol class="problems">
+          <li>
+            <span class="tag">Transform</span>
+            Use the definition of the Laplace transform to find \( \mathcal{L}\{f(t)\} \).
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( f(t) = e^{t-3} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( \dfrac{e^{-3}}{s - 1} \), \( s \gt 1 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( f(t) = te^{-2t} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( \dfrac{1}{(s + 2)^2} \), \( s \gt -2 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( f(t) = e^{2t}\cos t \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( \dfrac{s - 2}{(s - 2)^2 + 1} \), \( s \gt 2 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(d)</span> \( f(t) = t\sin t \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( \dfrac{2s}{(s^2 + 1)^2} \), \( s \gt 0 \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="tag">Transform</span>
+            Use a table of basic transforms and linearity to find \( \mathcal{L}\{f(t)\} \).
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( f(t) = 3t^5 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( \dfrac{360}{s^6} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( f(t) = 5t + 2 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( \dfrac{5}{s^2} + \dfrac{2}{s} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( f(t) = t^3 - 4t + 1 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( \dfrac{6}{s^4} - \dfrac{4}{s^2} + \dfrac{1}{s} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(d)</span> \( f(t) = (t - 2)^2 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( \dfrac{2}{s^3} - \dfrac{4}{s^2} + \dfrac{4}{s} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(e)</span> \( f(t) = 3 - e^{-2t} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( \dfrac{3}{s} - \dfrac{1}{s + 2} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(f)</span> \( f(t) = (e^{t} - 1)^2 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( \dfrac{1}{s - 2} - \dfrac{2}{s - 1} + \dfrac{1}{s} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(g)</span> \( f(t) = 2\cos 4t + 3t^2 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( \dfrac{2s}{s^2 + 16} + \dfrac{6}{s^3} \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="tag">Inverse</span>
+            Use algebra (such as partial fractions) and a table of basic transforms to find the inverse Laplace transform.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( \mathcal{L}^{-1}\left\{\dfrac{1}{s^4}\right\} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( \tfrac16 t^3 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( \mathcal{L}^{-1}\left\{\dfrac{3}{s} - \dfrac{24}{s^5}\right\} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( 3 - t^4 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( \mathcal{L}^{-1}\left\{\dfrac{(s - 2)^2}{s^3}\right\} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( 1 - 4t + 2t^2 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(d)</span> \( \mathcal{L}^{-1}\left\{\dfrac{2}{s} - \dfrac{1}{s^2} + \dfrac{3}{s + 1}\right\} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( 2 - t + 3e^{-t} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(e)</span> \( \mathcal{L}^{-1}\left\{\dfrac{1}{3s - 1}\right\} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( \tfrac13 e^{t/3} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(f)</span> \( \mathcal{L}^{-1}\left\{\dfrac{4}{s^2 + 16}\right\} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( \sin 4t \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(g)</span> \( \mathcal{L}^{-1}\left\{\dfrac{9s}{9s^2 + 1}\right\} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( \cos\tfrac13 t \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(h)</span> \( \mathcal{L}^{-1}\left\{\dfrac{3s + 4}{s^2 + 4}\right\} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( 3\cos 2t + 2\sin 2t \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(i)</span> \( \mathcal{L}^{-1}\left\{\dfrac{1}{s^2 - 2s}\right\} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( \tfrac12 e^{2t} - \tfrac12 \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(j)</span> \( \mathcal{L}^{-1}\left\{\dfrac{s}{s^2 - s - 2}\right\} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( \tfrac23 e^{2t} + \tfrac13 e^{-t} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(k)</span> \( \mathcal{L}^{-1}\left\{\dfrac{0.5s}{(s - 0.2)(s + 0.3)}\right\} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( 0.2e^{0.2t} + 0.3e^{-0.3t} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(l)</span> \( \mathcal{L}^{-1}\left\{\dfrac{2s}{(s - 1)(s - 2)(s - 4)}\right\} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( \tfrac23 e^{t} - 2e^{2t} + \tfrac43 e^{4t} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(m)</span> \( \mathcal{L}^{-1}\left\{\dfrac{1}{s^3 + 4s}\right\} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( \tfrac14 - \tfrac14\cos 2t \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(n)</span> \( \mathcal{L}^{-1}\left\{\dfrac{s + 1}{s(s^2 + 1)}\right\} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( 1 - \cos t + \sin t \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(o)</span> \( \mathcal{L}^{-1}\left\{\dfrac{1}{(s^2 + 1)(s^2 + 9)}\right\} \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( \tfrac18\sin t - \tfrac{1}{24}\sin 3t \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="tag">IVP</span>
+            Use the Laplace transform to solve the given initial-value problem.
+            <ul class="parts">
+              <li>
+                <span class="pnum">(a)</span> \( \dfrac{dy}{dt} + y = 2,\ y(0) = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = 2 - 2e^{-t} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(b)</span> \( y' - 3y = e^{t},\ y(0) = 1 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = \tfrac32 e^{3t} - \tfrac12 e^{t} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(c)</span> \( y'' + 3y' + 2y = 0,\ y(0) = 2,\ y'(0) = -1 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = 3e^{-t} - e^{-2t} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(d)</span> \( y'' + 4y = 3\sin t,\ y(0) = 1,\ y'(0) = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = \cos 2t + \sin t - \tfrac12\sin 2t \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(e)</span> \( y''' - 4y' = 0,\ y(0) = 0,\ y'(0) = 0,\ y''(0) = 8 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = -2 + e^{2t} + e^{-2t} \)</p>
+                </details>
+              </li>
+              <li>
+                <span class="pnum">(f)</span> \( y^{(4)} - 16y = 0,\ y(0) = 2,\ y'(0) = y''(0) = y'''(0) = 0 \)
+                <details class="part-answer">
+                  <summary>Show answer</summary>
+                  <p class="answer">\( y = \tfrac12 e^{2t} + \tfrac12 e^{-2t} + \cos 2t \)</p>
+                </details>
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+    </main>
+
+    <footer class="wrap">
+        Answers were checked with a computer algebra system. If an answer looks wrong, verify it by substituting it back into the equation.
+    </footer>
+  </body>
+</html>
